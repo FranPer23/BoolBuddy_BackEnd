@@ -28,4 +28,13 @@ class Profile extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function subscription()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+    public function technology()
+    {
+        return $this->hasMany(Technology::class);
+    }
 }
