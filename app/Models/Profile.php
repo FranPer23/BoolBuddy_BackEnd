@@ -9,7 +9,23 @@ class Profile extends Model
 {
     use HasFactory;
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
+    }
+
+    public function vote()
+    {
+        return $this->hasMany(Vote::class);
+    }
+
+    public function message()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function review()
+    {
+        return $this->hasMany(Review::class);
     }
 }
