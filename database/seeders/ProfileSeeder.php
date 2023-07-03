@@ -23,7 +23,7 @@ class ProfileSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
 
             $profile = new Profile();
-            $profile->name = $faker->name();
+            $profile->name = $users[$i]->name;
             $profile->surname = $faker->lastName();
             $profile->address = $faker->streetAddress();
             $profile->city = $faker->city();
