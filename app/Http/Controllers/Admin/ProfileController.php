@@ -19,8 +19,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles = Profile::all();
-        return view('admin.profiles.index', compact('profiles'));
+        // $profile = Profile::all();
+        // return view('admin.profiles.index', compact('profile'));
     }
 
     /**
@@ -44,8 +44,8 @@ class ProfileController extends Controller
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
         $data['user_id'] = Auth::user()->id;
-        Profile::create($data);
-        return redirect()->route('admin.profiles.index')->with('message', "Your profile has been created");
+        $profile = Profile::create($data);
+        return redirect()->route('admin.profiles.show', $profile->slug)->with('message', "Your profile has been created");
     }
 
     /**
@@ -54,8 +54,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Profile $profile)
     {
+        
         return view('admin.profiles.show', compact('profile'));
     }
 
