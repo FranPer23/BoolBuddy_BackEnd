@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 
@@ -41,10 +42,10 @@ class ProfileController extends Controller
     public function store(StoreProfileRequest $request)
     {
         $data = $request->validated();
-        dd($data);
-        // $data['slug'] = Str::slug($data['name']);
-        // $profile = Profile::create($data);
-        // return redirect()->route('admin.profiles.show')->with('message', "Your profile has been created");
+        $data['slug'] = Str::slug($data['name']);
+        $data['user_id'] = Auth::user()->id;
+        Profile::create($data);
+        return redirect()->route('admin.profiles.index')->with('message', "Your profile has been created");
     }
 
     /**

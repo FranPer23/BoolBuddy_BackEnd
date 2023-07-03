@@ -1,7 +1,19 @@
 @extends('layouts.admin')
 
 @section('content')
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    
     <h2>Add a new profile</h2>
+
     <a href="{{ url()->previous() }}">Back</a>
 
     {{-- @include('partials.errors') --}}
@@ -23,7 +35,7 @@
             <label for="address" class="form-label">Address</label>
             <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
         </div>
-        
+
         <div class="mb-3">
             <label for="city" class="form-label">city</label>
             <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}">
@@ -31,7 +43,7 @@
 
         <div class="mb-3">
             <label for="photo" class="form-label">photo</label>
-            <input type="text" class="form-control" id="photo" name="photo" value="{{ old('photo') }}">
+            <input type="file" class="form-control" id="photo" name="photo" value="{{ old('photo') }}">
         </div>
 
         <div class="mb-3">
@@ -46,7 +58,7 @@
 
         <div class="mb-3">
             <label for="cv" class="form-label">cv</label>
-            <input type="text" class="form-control" id="cv" name="cv" value="{{ old('cv') }}">
+            <input type="file" class="form-control" id="cv" name="cv" value="{{ old('cv') }}">
         </div>
 
         <div class="mb-3">

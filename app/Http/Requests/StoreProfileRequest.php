@@ -29,14 +29,14 @@ class StoreProfileRequest extends FormRequest
             'surname' => 'required|max:255',
             'address' => 'nullable|max:255',
             'city' => 'nullable|max:255',
-            'photo' => 'nullable|max:255',
-            'mobile' => 'required|max:255',
+            'photo' => 'nullable|image|max:2048',
+            'mobile' => 'required|unique:profiles|max:255',
             'phone' => 'nullable|max:255',
             'cv' => 'nullable|max:255',
-            'slug' => 'required|max:255',
+            // 'slug' => 'required|max:255',
             'field' => 'required|max:255',
             'service' => 'required|max:255',
-            'users_id' => ['exists:users,id']
+            // 'user_id' => ['required', 'exists:users,id']
         ];
     }
 }
