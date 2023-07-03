@@ -1,5 +1,7 @@
-@extends('layouts.admin');
+@extends('layouts.admin')
 
 @section('content')
-<h1>Index</h1>    
+
+
+
 @endsection
