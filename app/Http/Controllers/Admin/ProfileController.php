@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class ProfileController extends Controller
 {
@@ -35,20 +38,13 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProfileRequest $request)
     {
         $data = $request->validated();
-        $data['slug'] = Str::slug($data['title'], '_');
-        // $data['user_id'] = Auth::user()->id;
-
-        if ($request->hasFile('image')) {
-            $path = Storage::disk('public')->put('project_images', $request->image);
-            $data['image'] = $path;
-        }
-
-        $project = Project::create($data);
-        $project->technologies()->sync($request->technologies);
-        return redirect()->route('admin.projects.index')->with('message', "$project->title has been created!");
+        dd($data);
+        // $data['slug'] = Str::slug($data['name']);
+        // $profile = Profile::create($data);
+        // return redirect()->route('admin.profiles.show')->with('message', "Your profile has been created");
     }
 
     /**
