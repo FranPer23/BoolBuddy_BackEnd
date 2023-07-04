@@ -37,6 +37,6 @@ class Profile extends Model
     }
     public function technology()
     {
-        return $this->hasMany(Technology::class);
+        return $this->belongsToMany(Technology::class);
     }
 }

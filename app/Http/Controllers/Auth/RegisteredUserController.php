@@ -57,7 +57,7 @@ class RegisteredUserController extends Controller
         ]);
         // dd($request->technologies);
 
-        // $profile->technology()->attach($request->technologies);
+        $profile->technology()->attach($request->technologies);
 
         // if ($request->has('technologies')) {
 
