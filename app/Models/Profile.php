@@ -33,7 +33,7 @@ class Profile extends Model
 
     public function subscription()
     {
-        return $this->hasMany(Subscription::class);
+        return $this->belongsToMany(Subscription::class);
     }
     public function technology()
     {

@@ -11,6 +11,6 @@ class Technology extends Model
 
     public function profile()
     {
-        return $this->hasMany(Profile::class);
+        return $this->belongsToMany(Profile::class);
     }
 }
