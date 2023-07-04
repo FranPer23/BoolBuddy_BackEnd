@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\Technology;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -21,7 +22,9 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+
+        $technologies = Technology::all();
+        return view('auth.register', compact('technologies'));
     }
 
     /**
@@ -50,7 +53,15 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'city' => $request->city,
             'user_id' => $user->id,
+
         ]);
+        // dd($request->technologies);
+
+        // $profile->technology()->attach($request->technologies);
+
+        // if ($request->has('technologies')) {
+
+        // }
 
         event(new Registered($user));
 

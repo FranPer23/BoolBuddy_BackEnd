@@ -76,14 +76,26 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="mb-4 row">
-                                <label for="technology"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Specializzazione*') }}</label>
+                            <div class="mb-4 row">
+                                <label for="email"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Specializzazioni*') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="technology" type="text"
-                                        class="form-control @error('technology') is-invalid @enderror" name="technology"
-                                        value="{{ old('technology') }}" required autocomplete="technology" autofocus>
+                                    <div class="form-check">
+
+                                        @foreach ($technologies as $technology)
+                                            <div class="form-check">
+                                                <input class="form-check-input @error('technologies') is-invalid @enderror"
+                                                    name="technologies[]" type="checkbox" value="{{ $technology->id }}"
+                                                    id="technology-{{ $technology->id }}" @checked(in_array($technology->id, old('technologies', [])))>
+                                                <label class="form-check-label" for="technology-{{ $technology->id }}">
+                                                    {{ $technology->name }}
+                                                </label>
+
+                                            </div>
+                                        @endforeach
+                                        </label>
+                                    </div>
 
                                     @error('technology')
                                         <span class="invalid-feedback" role="alert">
@@ -91,7 +103,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div> --}}
+                            </div>
 
                             <div class="mb-4 row">
                                 <label for="address"
