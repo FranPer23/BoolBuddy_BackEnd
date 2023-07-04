@@ -42,10 +42,10 @@ class ProfileController extends Controller
     public function store(StoreProfileRequest $request)
     {
         $data = $request->validated();
-        $data['slug'] = Str::slug($data['name']);
+        // $data['slug'] = Str::slug($data['name']);
         $data['user_id'] = Auth::user()->id;
         $profile = Profile::create($data);
-        return redirect()->route('admin.profiles.show', $profile->slug)->with('message', "Your profile has been created");
+        return redirect()->route('admin.profiles.show', $profile->id)->with('message', "Your profile has been created");
     }
 
     /**
@@ -56,7 +56,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        
+
         return view('admin.profiles.show', compact('profile'));
     }
 

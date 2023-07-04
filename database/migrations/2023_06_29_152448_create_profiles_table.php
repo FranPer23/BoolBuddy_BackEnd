@@ -17,15 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->string('address')->nullable();
-            $table->string('city')->nullable();
+            $table->string('address');
+            $table->string('city');
             $table->text('photo')->nullable();
-            $table->string('mobile')->unique();
+            $table->string('mobile')->unique()->nullable();
             $table->string('phone')->unique()->nullable();
             $table->string('cv')->nullable();
-            $table->string('slug')->unique();
-            $table->string('field');
-            $table->string('service');
+            $table->string('field')->nullable();
+            $table->string('service')->nullable();
             $table->timestamps();
         });
     }
