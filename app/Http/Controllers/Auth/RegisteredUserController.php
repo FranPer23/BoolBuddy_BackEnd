@@ -55,13 +55,13 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id,
 
         ]);
-        // dd($request->technologies);
-
-        // $profile->technology()->attach($request->technologies);
-
-        // if ($request->has('technologies')) {
-
+        
+        // try {
+        //     $profile->technologies()->attach($request->technologies);
+        // } catch (\Exception $e) {
+        //     dd($e->getMessage());
         // }
+
 
         event(new Registered($user));
 
