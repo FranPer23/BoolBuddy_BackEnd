@@ -13,6 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
@@ -43,8 +44,15 @@ class RegisteredUserController extends Controller
             'surname' => 'required | max:255|min:3',
             'mobile' => 'nullable|max:100|unique:profiles',
             'phone' => 'nullable|max:100|unique:profiles',
+            'photo' => 'nullable',
             'technologies' => 'required|max:255',
         ]);
+
+        //Salvataggio dell'immagini
+        if ($request->hasFile('photo')) {
+            $path = Storage::disk('public')->put('photo', $request->photo);
+            $data['photo'] = $path;
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -52,8 +60,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $profile = Profile::create([
 
+
+        $profile = Profile::create([
             'name' => $request->name,
             'surname' => $request->surname,
             'address' => $request->address,
@@ -72,6 +81,7 @@ class RegisteredUserController extends Controller
         // if ($request->has('technologies')) {
 
         // }
+
 
 
         event(new Registered($user));

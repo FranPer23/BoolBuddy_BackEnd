@@ -9,6 +9,7 @@ use App\Models\Profile;
 use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -48,6 +49,9 @@ class ProfileController extends Controller
         // $data['slug'] = Str::slug($data['name']);
         $data['user_id'] = Auth::user()->id;
         $profile = Profile::create($data);
+
+
+
         return redirect()->route('admin.profiles.show', $profile->id)->with('message', "Your profile has been created");
     }
 
@@ -96,6 +100,16 @@ class ProfileController extends Controller
     {
         $data = $request->validated();
         $profile = Profile::where('user_id', Auth::user()->id)->first();
+
+        // Aggiornamento dell'immagine
+        if ($request->hasFile('photo')) {
+            if ($profile->photo) {
+                Storage::delete($profile->photo);
+            }
+            $path = Storage::disk('public')->put('photo', $request->photo);
+            $data['photo'] = $path;
+        }
+
         $profile->update($data);
         if ($request->has('technologies')) {
             $profile->technology()->sync($request->technologies);
@@ -116,6 +130,9 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $profile = Profile::findOrFail($id);
+        // $profile->technology()->detach();
+        // $profile->delete();
+        // return redirect()->route('admin.profiles.index');
     }
 }

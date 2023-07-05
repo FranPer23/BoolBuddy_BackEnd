@@ -22,7 +22,9 @@
                 @endif
 
                 @if ($profile->photo)
-                    <p><strong>Photo:</strong> {{ $profile->photo }}</p>
+                    <img width="100%"
+                        src="{{ str_contains($profile->photo, 'https://') ? $profile->photo : asset('storage' . $profile->photo) }}"
+                        alt="{{ $profile->name }}">
                 @endif
 
                 @if ($profile->city)
@@ -62,6 +64,14 @@
                     @endforelse
                 </p>
             </div>
+
+            {{-- <form class="d-inline-block" action="{{ route('admin.profiles.destroy', $profile->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </form> --}}
 
             <div class="card-footer">
                 <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Modifica</a>
