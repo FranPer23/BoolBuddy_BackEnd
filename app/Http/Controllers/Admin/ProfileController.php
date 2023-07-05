@@ -93,6 +93,9 @@ class ProfileController extends Controller
         } else {
             $profile->technology()->detach($request->technologies);
         }
+
+
+
         return redirect()->route('admin.profiles.index')->with('message', "{$profile->title} è stato modificato con successo");
     }
 
