@@ -46,6 +46,7 @@ class RegisteredUserController extends Controller
             'mobile' => 'nullable|max:100|unique:profiles',
             'phone' => 'nullable|max:100|unique:profiles',
             'photo' => 'nullable',
+            'cv' => 'nullable',
             'address' => 'required',
             'city' => 'required',
             'technologies' => 'required|max:255',
@@ -63,6 +64,11 @@ class RegisteredUserController extends Controller
         if ($request->hasFile('photo')) {
             $path = $request->photo->store('photo', 'public');
             $data['photo'] =  '/' . $path;
+        }
+
+        if ($request->hasFile('cv')) {
+            $path = $request->cv->store('cv', 'public');
+            $data['cv'] =  '/' . $path;
         }
 
         $data['user_id'] = $user->id;

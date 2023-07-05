@@ -110,6 +110,14 @@ class ProfileController extends Controller
             $data['photo'] = '/' . $path;
         }
 
+        if ($request->hasFile('cv')) {
+            if ($profile->cv) {
+                Storage::delete($profile->cv);
+            }
+            $path = Storage::disk('public')->put('cv', $request->cv);
+            $data['cv'] = '/' . $path;
+        }
+
         $profile->update($data);
         if ($request->has('technologies')) {
             $profile->technology()->sync($request->technologies);

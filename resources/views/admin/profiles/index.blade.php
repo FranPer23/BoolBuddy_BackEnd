@@ -22,6 +22,7 @@
                 @endif
 
                 @if ($profile->photo)
+                    <p><strong>photo:</p>
                     <img width="100%"
                         src="{{ str_contains($profile->photo, 'https://') ? $profile->photo : asset('storage' . $profile->photo) }}"
                         alt="{{ $profile->name }}">
@@ -40,7 +41,10 @@
                 @endif
 
                 @if ($profile->cv)
-                    <p><strong>CV:</strong> {{ $profile->cv }}</p>
+                    <p><strong>CV:</p>
+                    <img width="100%"
+                        src="{{ str_contains($profile->cv, 'https://') ? $profile->cv : asset('storage' . $profile->cv) }}"
+                        alt="{{ $profile->name }}">
                 @endif
 
                 @if ($profile->field)
