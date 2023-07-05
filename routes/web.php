@@ -21,7 +21,11 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('profiles', ProfileController::class)->parameters(['profiles' => 'profile:slug']);
+    Route::resource('profiles', ProfileController::class);
+
+    // Route::get('profile', function () {
+    //     // Only authenticated users may enter...
+    // })->middleware('auth');
 });
 
 

@@ -19,8 +19,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        // $profile = Profile::all();
-        // return view('admin.profiles.index', compact('profile'));
+        $profile = Profile::first();
+        return view('admin.profiles.index', compact('profile'));
     }
 
     /**
@@ -68,7 +68,9 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $profile = Profile::findOrFail($id);
+
+        return view('admin.profiles.edit', compact('profile'));
     }
 
     /**

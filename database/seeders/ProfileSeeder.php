@@ -19,7 +19,7 @@ class ProfileSeeder extends Seeder
     public function run(Faker $faker)
     {
         $users = User::all();
-        
+
         for ($i = 0; $i < 20; $i++) {
 
             $profile = new Profile();
@@ -34,8 +34,8 @@ class ProfileSeeder extends Seeder
             $profile->field = $faker->jobTitle();
             $profile->service = $faker->sentence(3);
             $profile->user_id = $users[$i]->id;
-            
-            $profile->slug = Str::slug($profile->name . ' ' . $profile->surname . '-' . $profile->id);
+
+
             $profile->save();
         }
     }
