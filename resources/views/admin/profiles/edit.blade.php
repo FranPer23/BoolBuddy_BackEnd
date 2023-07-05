@@ -77,6 +77,22 @@
             <input type="text" class="form-control" id="service" name="service"
                 value="{{ old('service', $profile->service) }}">
         </div>
+
+        <div class="form-check">
+            <label for="service" class="form-label">Tecnologie</label>
+            @foreach ($technologies as $technology)
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="{{ $technology->id }}"
+                        id="technology{{ $technology->id }}" name="technologies[]" @checked(old('technologies')
+                                ? in_array($technology->id, old('technologies', []))
+                                : $profile->technology->contains($technology))>
+                    <label class="form-check-label" for="technology{{ $technology->id }}">
+                        {{ $technology->name }}
+                    </label>
+                </div>
+            @endforeach
+        </div>
+
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>
 @endsection

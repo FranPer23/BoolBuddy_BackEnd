@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Profile;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -20,8 +21,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        $technologies = Technology::all();
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        return view('admin.profiles.index', compact('profile'));
+        return view('admin.profiles.index', compact('profile', 'technologies'));
     }
 
     /**
@@ -57,8 +59,8 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-
-        return view('admin.profiles.show', compact('profile'));
+        $technologies = Technology::all();
+        return view('admin.profiles.show', compact('profile', 'technologies'));
     }
 
     /**
@@ -70,8 +72,8 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = Profile::findOrFail($id);
-
-        return view('admin.profiles.edit', compact('profile'));
+        $technologies = Technology::all();
+        return view('admin.profiles.edit',  compact('profile', 'technologies'));
     }
 
     /**
@@ -86,7 +88,11 @@ class ProfileController extends Controller
         $data = $request->validated();
         $profile = Profile::where('user_id', Auth::user()->id)->first();
         $profile->update($data);
-
+        if ($request->has('technologies')) {
+            $profile->technology()->sync($request->technologies);
+        } else {
+            $profile->technology()->detach($request->technologies);
+        }
         return redirect()->route('admin.profiles.index')->with('message', "{$profile->title} è stato modificato con successo");
     }
 

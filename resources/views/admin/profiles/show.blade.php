@@ -2,46 +2,49 @@
 
 
 @section('content')
-     
-    <h1>My Profile</h1>
+    <h1>
+        My Profile</h1>
 
     <ul>
         <li>
-            {{$profile->name}}
+            {{ $profile->name }}
         </li>
         <li>
-            {{$profile->surname}}
+            {{ $profile->surname }}
         </li>
         <li>
-            {{$profile->address}}
+            {{ $profile->address }}
         </li>
         <li>
-            {{$profile->photo}}
+            {{ $profile->photo }}
         </li>
         <li>
-            {{$profile->city}}
+            {{ $profile->city }}
         </li>
         <li>
-            {{$profile->mobile}}
+            {{ $profile->mobile }}
         </li>
         <li>
-            {{$profile->mobile}}
+            {{ $profile->mobile }}
         </li>
         <li>
-            {{$profile->phone}}
+            {{ $profile->phone }}
         </li>
         <li>
-            {{$profile->cv}}
+            {{ $profile->cv }}
         </li>
         <li>
-            {{$profile->field}}
+            {{ $profile->field }}
         </li>
         <li>
-            {{$profile->service}}
+            {{ $profile->service }}
         </li>
+
+
+
     </ul>
 
-    
+
     {{-- <div class="my-4">
         <h6>Categoria:</h6>
         @if ($profile->surname)
@@ -52,7 +55,7 @@
         <span>{{ $profile->slug }}</span>
     </div> --}}
     {{-- <div> --}}
-        {{-- <h6>Tecnologia:</h6>
+    {{-- <h6>Tecnologia:</h6>
         @forelse ($profile->technologies as $technology)
             <span> {{ $technology->name }} {{ $loop->last ? '' : ','}}</span>
         @empty

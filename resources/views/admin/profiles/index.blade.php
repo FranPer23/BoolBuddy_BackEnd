@@ -39,6 +39,13 @@
         <li>
             {{ $profile->service }}
         </li>
+        <li>
+            @forelse ($profile->technology as $single_technology)
+                <span> {{ $single_technology->name }} {{ $loop->last ? '' : ',' }}</span>
+            @empty
+                <span>Nessuna Tecnologia presente</span>
+            @endforelse
+        </li>
     </ul>
     <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">modifica</a>
 @endsection
