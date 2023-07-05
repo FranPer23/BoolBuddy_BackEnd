@@ -59,8 +59,12 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        $technologies = Technology::all();
-        return view('admin.profiles.show', compact('profile', 'technologies'));
+        if ($profile->id == Auth::user()->id) {
+            $technologies = Technology::all();
+            return view('admin.profiles.show', compact('profile', 'technologies'));
+        } else {
+            return view('errors.403');
+        }
     }
 
     /**
@@ -72,8 +76,13 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = Profile::findOrFail($id);
-        $technologies = Technology::all();
-        return view('admin.profiles.edit',  compact('profile', 'technologies'));
+
+        if ($profile->id == Auth::user()->id) {
+            $technologies = Technology::all();
+            return view('admin.profiles.edit',  compact('profile', 'technologies'));
+        } else {
+            return view('errors.403');
+        }
     }
 
     /**
