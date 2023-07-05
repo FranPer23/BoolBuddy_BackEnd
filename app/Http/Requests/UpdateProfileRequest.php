@@ -35,6 +35,7 @@ class UpdateProfileRequest extends FormRequest
             'cv' => 'nullable|max:255',
             'field' => 'nullable|max:255',
             'service' => 'nullable|max:255',
+            'technologies' => 'required',
 
         ];
     }
