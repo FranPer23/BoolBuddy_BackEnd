@@ -37,7 +37,8 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
-        $request->validate([
+
+        $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -45,14 +46,12 @@ class RegisteredUserController extends Controller
             'mobile' => 'nullable|max:100|unique:profiles',
             'phone' => 'nullable|max:100|unique:profiles',
             'photo' => 'nullable',
+            'address' => 'required',
+            'city' => 'required',
             'technologies' => 'required|max:255',
+            'user_id' => 'nullable',
         ]);
 
-        //Salvataggio dell'immagini
-        if ($request->hasFile('photo')) {
-            $path = Storage::disk('public')->put('photo', $request->photo);
-            $data['photo'] = $path;
-        }
 
         $user = User::create([
             'name' => $request->name,
@@ -60,20 +59,17 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        //Salvataggio dell'immagini
+        if ($request->hasFile('photo')) {
+            $path = $request->photo->store('photo', 'public');
+            $data['photo'] =  '/' . $path;
+        }
 
+        $data['user_id'] = $user->id;
 
-        $profile = Profile::create([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'address' => $request->address,
-            'city' => $request->city,
-            'photo' => $request->photo,
-            'mobile' => $request->mobile,
-            'phone' => $request->phone,
-            'cv' => $request->cv,
-            'field' => $request->field,
-            'user_id' => $user->id,
-        ]);
+        $profile = Profile::create(
+            $data
+        );
         // dd($request->technologies);
 
         $profile->technology()->attach($request->technologies);

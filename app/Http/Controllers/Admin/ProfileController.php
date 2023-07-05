@@ -81,7 +81,7 @@ class ProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
 
-        if ($profile->id == Auth::user()->id) {
+        if ($profile->user_id == Auth::user()->id) {
             $technologies = Technology::all();
             return view('admin.profiles.edit',  compact('profile', 'technologies'));
         } else {
@@ -107,7 +107,7 @@ class ProfileController extends Controller
                 Storage::delete($profile->photo);
             }
             $path = Storage::disk('public')->put('photo', $request->photo);
-            $data['photo'] = $path;
+            $data['photo'] = '/' . $path;
         }
 
         $profile->update($data);

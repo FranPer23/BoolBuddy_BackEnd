@@ -29,7 +29,7 @@ class UpdateProfileRequest extends FormRequest
             'surname' => 'required|max:255',
             'address' => 'nullable|max:255',
             'city' => 'nullable|max:255',
-            'photo' => 'nullable|image|max:2048',
+            'photo' => 'nullable',
             'mobile' => ['nullable',  'max:255', Rule::unique('profiles')->ignore($this->profile)],
             'phone' => 'nullable|max:255',
             'cv' => 'nullable|max:255',

@@ -35,10 +35,6 @@
                     <p><strong>Mobile:</strong> {{ $profile->mobile }}</p>
                 @endif
 
-                @if ($profile->city)
-                    <p><strong>City:</strong> {{ $profile->city }}</p>
-                @endif
-
                 @if ($profile->phone)
                     <p><strong>Phone:</strong> {{ $profile->phone }}</p>
                 @endif
