@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProfileRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profile = Profile::first();
+        $profile = Profile::where('user_id', Auth::user()->id)->first();
         return view('admin.profiles.index', compact('profile'));
     }
 
@@ -80,9 +81,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProfileRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        $profile = Profile::where('user_id', Auth::user()->id)->first();
+        $profile->update($data);
+        return redirect()->route('admin.profiles.index')->with('message', "{$profile->title} è stato modificato con successo");
     }
 
     /**

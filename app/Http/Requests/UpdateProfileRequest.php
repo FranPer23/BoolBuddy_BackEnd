@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreProfileRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,7 +34,7 @@ class StoreProfileRequest extends FormRequest
             'cv' => 'nullable|max:255',
             'field' => 'nullable|max:255',
             'service' => 'nullable|max:255',
-            // 'user_id' => ['required', 'exists:users,id']
+
         ];
     }
 }
