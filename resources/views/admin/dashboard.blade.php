@@ -38,7 +38,7 @@
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 {{-- Contenuto --}}
-                <h1 class="mt-3">Welcome back, {{ Auth::user()->name }}</h1>
+                <h1 class="mt-3">Welcome back, {{ $profile->name }}</h1>
 
                 <div class="row">
                     <div class="col-md-6">
