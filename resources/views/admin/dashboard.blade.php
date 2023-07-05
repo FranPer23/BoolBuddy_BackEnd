@@ -37,13 +37,55 @@
             </nav> --}}
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-               {{-- Contenuto --}}
+                {{-- Contenuto --}}
                 <h1 class="mt-3">Welcome back, {{ Auth::user()->name }}</h1>
 
-                <div class="my-3 p-3 bg-white rounded shadow-sm">
-                    <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
-                    {{-- Loop dei dati --}}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">My Profile</h5>
+                                {{-- Dati --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">My Reviews</h5>
+                                {{-- Dati --}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">My Statistics</h5>
+                                {{-- Dati --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">My Messages</h5>
+                                {{-- Dati --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">My Sponsor</h5>
+                                {{-- Dati --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </main>
         </div>
     </div>

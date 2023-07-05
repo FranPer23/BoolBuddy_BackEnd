@@ -8,6 +8,7 @@
                 <h2>My Profile</h2>
             </div>
             <div class="card-body">
+
                 <p><strong>Name:</strong> {{ $profile->name }}</p>
                 <p><strong>Surname:</strong> {{ $profile->surname }}</p>
                 <p><strong>Address:</strong> {{ $profile->address }}</p>
@@ -26,9 +27,11 @@
                     @endforelse
                 </p>
             </div>
+
             <div class="card-footer">
                 <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Modifica</a>
             </div>
+
         </div>
     </div>
 @endsection
