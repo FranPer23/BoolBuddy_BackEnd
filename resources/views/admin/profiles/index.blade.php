@@ -4,6 +4,15 @@
     <h1>Hello Admin</h1>
 
     <h1>My Profile</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <ul>
         <li>
