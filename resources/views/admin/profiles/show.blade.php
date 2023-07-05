@@ -1,68 +1,72 @@
 @extends('layouts.admin')
 
-
 @section('content')
-    <h1>
-        My Profile</h1>
+    <div class="container my-4">
+        <h1 class="mb-4">Hello {{ $profile->name }}</h1>
+        <div class="card">
+            <div class="card-header">
+                <h2>My Profile</h2>
+            </div>
+            <div class="card-body">
 
-    <ul>
-        <li>
-            {{ $profile->name }}
-        </li>
-        <li>
-            {{ $profile->surname }}
-        </li>
-        <li>
-            {{ $profile->address }}
-        </li>
-        <li>
-            {{ $profile->photo }}
-        </li>
-        <li>
-            {{ $profile->city }}
-        </li>
-        <li>
-            {{ $profile->mobile }}
-        </li>
-        <li>
-            {{ $profile->mobile }}
-        </li>
-        <li>
-            {{ $profile->phone }}
-        </li>
-        <li>
-            {{ $profile->cv }}
-        </li>
-        <li>
-            {{ $profile->field }}
-        </li>
-        <li>
-            {{ $profile->service }}
-        </li>
+                @if ($profile->name)
+                    <p><strong>Name:</strong> {{ $profile->name }}</p>
+                @endif
+
+                @if ($profile->surname)
+                    <p><strong>Surname:</strong> {{ $profile->surname }}</p>
+                @endif
+
+                @if ($profile->address)
+                    <p><strong>Address:</strong> {{ $profile->address }}</p>
+                @endif
+
+                @if ($profile->photo)
+                    <p><strong>Photo:</strong> {{ $profile->photo }}</p>
+                @endif
+
+                @if ($profile->city)
+                    <p><strong>City:</strong> {{ $profile->city }}</p>
+                @endif
+
+                @if ($profile->mobile)
+                    <p><strong>Mobile:</strong> {{ $profile->mobile }}</p>
+                @endif
+
+                @if ($profile->city)
+                    <p><strong>City:</strong> {{ $profile->city }}</p>
+                @endif
+
+                @if ($profile->phone)
+                    <p><strong>Phone:</strong> {{ $profile->phone }}</p>
+                @endif
+
+                @if ($profile->cv)
+                    <p><strong>CV:</strong> {{ $profile->cv }}</p>
+                @endif
+
+                @if ($profile->field)
+                    <p><strong>Field:</strong> {{ $profile->field }}</p>
+                @endif
 
 
+                @if ($profile->service)
+                    <p><strong>Service:</strong> {{ $profile->service }}</p>
+                @endif
 
-    </ul>
+                <p><strong>Technology:</strong>
+                    @forelse ($profile->technology as $single_technology)
+                        <span> {{ $single_technology->name }} {{ $loop->last ? '' : ',' }}</span>
+                    @empty
+                        <span>Nessuna Tecnologia presente</span>
+                    @endforelse
+                </p>
+            </div>
 
+            <div class="card-footer">
+                <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Modifica</a>
+            </div>
 
-    {{-- <div class="my-4">
-        <h6>Categoria:</h6>
-        @if ($profile->surname)
-            <span>{{ $profile->type->name }}</span>
-        @else
-            <span>Nessuna categoria</span>
-        @endif
-        <span>{{ $profile->slug }}</span>
-    </div> --}}
-    {{-- <div> --}}
-    {{-- <h6>Tecnologia:</h6>
-        @forelse ($profile->technologies as $technology)
-            <span> {{ $technology->name }} {{ $loop->last ? '' : ','}}</span>
-        @empty
-            <span>Nessuna Tecnologia presente</span>
-        @endforelse
+        </div>
     </div>
-    <p class="mt-4">{{ $profile->content }}</p>
-
-    <a class="btn btn-outline-success" href="{{ url()->previous() }}">Back</a> --}}
 @endsection
