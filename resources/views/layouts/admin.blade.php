@@ -54,27 +54,50 @@
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
+
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.profiles.index') }}">
-                                    <i class="fa-regular fa-folder-open"></i> profiles
+                                    <i class="fa-regular fa-folder-open"></i> Profile
                                 </a>
                             </li>
+
                             {{-- <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.technologies.index') }}">
-                                    <i class="fa-sharp fa-solid fa-code"></i> Technologies
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.edit' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.profiles.edit') }}">
+                                    <i class="fa-regular fa-folder-open"></i> Edit Profile
                                 </a>
                             </li> --}}
+
+                            {{-- <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.messages' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.messages') }}">
+                                    <i class="fa-regular fa-envelope"></i> My Messages
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.reviews' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.reviews') }}">
+                                    <i class="fa-regular fa-star"></i> My Reviews
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.statistics' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.statistics') }}">
+                                    <i class="fa-regular fa-chart-bar"></i> Statistics
+                                </a>
+                            </li> --}}
+
                         </ul>
-
-
                     </div>
                 </nav>
 
