@@ -86,6 +86,7 @@ class ProfileController extends Controller
         $data = $request->validated();
         $profile = Profile::where('user_id', Auth::user()->id)->first();
         $profile->update($data);
+
         return redirect()->route('admin.profiles.index')->with('message', "{$profile->title} è stato modificato con successo");
     }
 

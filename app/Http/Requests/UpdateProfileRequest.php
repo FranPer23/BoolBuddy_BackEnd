@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProfileRequest extends FormRequest
@@ -29,7 +30,7 @@ class UpdateProfileRequest extends FormRequest
             'address' => 'nullable|max:255',
             'city' => 'nullable|max:255',
             'photo' => 'nullable|image|max:2048',
-            'mobile' => 'nullable|unique:profiles|max:255',
+            'mobile' => ['nullable',  'max:255', Rule::unique('profiles')->ignore($this->profile)],
             'phone' => 'nullable|max:255',
             'cv' => 'nullable|max:255',
             'field' => 'nullable|max:255',
