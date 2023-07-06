@@ -20,7 +20,7 @@
 
                     <div class="card-body">
                         <form action="{{ route('admin.profiles.update', $profile->id) }}" method="POST"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" class="ms_form">
                             @method('PUT')
                             @csrf
 
@@ -28,7 +28,9 @@
                                 <label for="name" class="form-label">Name*</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     value="{{ old('name', $profile->name) }}">
+
                             </div>
+                            <span class="text text-danger" id="errorNameEmpty"></span>
 
                             <div class="mb-3">
                                 <label for="surname" class="form-label">Surname*</label>
@@ -112,4 +114,5 @@
             {{ __('Back') }}
         </a>
     </div>
+    @vite(['resources/js/validationEdit.js'])
 @endsection
