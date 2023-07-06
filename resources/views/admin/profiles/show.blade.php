@@ -9,6 +9,13 @@
             </div>
             <div class="card-body">
 
+                @if ($profile->photo)
+                    <p><strong>photo:</p>
+                    <img width="20%"
+                        src="{{ str_contains($profile->photo, 'https://') ? $profile->photo : asset('storage' . $profile->photo) }}"
+                        alt="{{ $profile->name }}">
+                @endif
+
                 @if ($profile->name)
                     <p><strong>Name:</strong> {{ $profile->name }}</p>
                 @endif
@@ -19,10 +26,6 @@
 
                 @if ($profile->address)
                     <p><strong>Address:</strong> {{ $profile->address }}</p>
-                @endif
-
-                @if ($profile->photo)
-                    <p><strong>Photo:</strong> {{ $profile->photo }}</p>
                 @endif
 
                 @if ($profile->city)
@@ -42,7 +45,10 @@
                 @endif
 
                 @if ($profile->cv)
-                    <p><strong>CV:</strong> {{ $profile->cv }}</p>
+                    <p><strong>CV:</p>
+                    <img width="20%"
+                        src="{{ str_contains($profile->cv, 'https://') ? $profile->cv : asset('storage' . $profile->cv) }}"
+                        alt="{{ $profile->name }}">
                 @endif
 
                 @if ($profile->field)

@@ -8,7 +8,13 @@
                 <h2>My Profile</h2>
             </div>
             <div class="card-body">
-
+                
+                @if ($profile->photo)
+                    <p><strong>photo:</p>
+                    <img width="20%"
+                        src="{{ str_contains($profile->photo, 'https://') ? $profile->photo : asset('storage' . $profile->photo) }}"
+                        alt="{{ $profile->name }}">
+                @endif
                 @if ($profile->name)
                     <p><strong>Name:</strong> {{ $profile->name }}</p>
                 @endif
@@ -21,12 +27,6 @@
                     <p><strong>Address:</strong> {{ $profile->address }}</p>
                 @endif
 
-                @if ($profile->photo)
-                    <p><strong>photo:</p>
-                    <img width="100%"
-                        src="{{ str_contains($profile->photo, 'https://') ? $profile->photo : asset('storage' . $profile->photo) }}"
-                        alt="{{ $profile->name }}">
-                @endif
 
                 @if ($profile->city)
                     <p><strong>City:</strong> {{ $profile->city }}</p>
@@ -42,7 +42,7 @@
 
                 @if ($profile->cv)
                     <p><strong>CV:</p>
-                    <img width="100%"
+                    <img width="20%"
                         src="{{ str_contains($profile->cv, 'https://') ? $profile->cv : asset('storage' . $profile->cv) }}"
                         alt="{{ $profile->name }}">
                 @endif
@@ -74,7 +74,7 @@
             </form> --}}
 
             <div class="card-footer">
-                <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Modifica</a>
+                <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Edit</a>
             </div>
 
         </div>

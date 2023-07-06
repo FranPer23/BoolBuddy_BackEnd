@@ -42,15 +42,27 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card mt-3">
+                        <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class="card-title">My Profile</h5>
+
+                                <div class="card-footer">
+                                    
+                                    @if ($profile->name)
+                                    <p><strong>Name:</strong> {{ $profile->name }}</p>
+                                    @endif
+                                    
+                                    @if ($profile->surname)
+                                    <p><strong>Surname:</strong> {{ $profile->surname }}</p>
+                                    @endif
+                                    <a href="{{ route('admin.profiles.show', $profile->id) }}" class="btn btn-primary">My Profile</a>
+                                </div>
                                 {{-- Dati --}}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card mt-3">
+                        <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class="card-title">My Reviews</h5>
                                 {{-- Dati --}}
@@ -61,7 +73,7 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card mt-3">
+                        <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class="card-title">My Statistics</h5>
                                 {{-- Dati --}}
@@ -69,7 +81,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card mt-3">
+                        <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class="card-title">My Messages</h5>
                                 {{-- Dati --}}
@@ -77,7 +89,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card mt-3">
+                        <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class="card-title">My Sponsor</h5>
                                 {{-- Dati --}}
