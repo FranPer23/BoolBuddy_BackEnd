@@ -47,15 +47,16 @@
                                 <h5 class="card-title">My Profile</h5>
 
                                 <div class="card-footer">
-                                    
+
                                     @if ($profile->name)
-                                    <p><strong>Name:</strong> {{ $profile->name }}</p>
+                                        <p><strong>Name:</strong> {{ $profile->name }}</p>
                                     @endif
-                                    
+
                                     @if ($profile->surname)
-                                    <p><strong>Surname:</strong> {{ $profile->surname }}</p>
+                                        <p><strong>Surname:</strong> {{ $profile->surname }}</p>
                                     @endif
-                                    <a href="{{ route('admin.profiles.show', $profile->id) }}" class="btn btn-primary">My Profile</a>
+                                    <a href="{{ route('admin.profiles.show', $profile->id) }}" class="btn btn-primary">My
+                                        Profile</a>
                                 </div>
                                 {{-- Dati --}}
                             </div>

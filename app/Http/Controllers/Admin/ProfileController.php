@@ -61,9 +61,11 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show($id)
     {
-        if ($profile->id == Auth::user()->id) {
+        $profile = Profile::findOrFail($id);
+
+        if ($profile->user_id == Auth::user()->id) {
             $technologies = Technology::all();
             return view('admin.profiles.show', compact('profile', 'technologies'));
         } else {
