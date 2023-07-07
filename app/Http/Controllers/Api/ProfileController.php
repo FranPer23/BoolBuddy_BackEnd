@@ -10,7 +10,7 @@ class ProfileController extends Controller
 {
     public function index(Request $request)
     {
-        $profiles = Profile::all();
+        $profiles = Profile::with(['technology'])->paginate(10);
 
         return response()->json([
             'success' => true, // non è obbligatorio, mi serve solo per dire che la chiamata è avvenuta con successo
@@ -21,7 +21,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         //metto first perchè non voglio tutti gli elementi, ma solo il primo
-        $profile = Profile::with('technologies')->where('id', $id)->first();
+        $profile = Profile::with('technology')->where('id', $id)->first();
 
 
         //se il progetto esiste mi da success true altrimenti mi restituisce false 
