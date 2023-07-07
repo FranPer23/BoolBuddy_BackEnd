@@ -10,7 +10,7 @@
             <div class="card-body">
 
                 @if ($profile->photo)
-                    <p><strong>photo:</p>
+                    <p><strong>Photo:</strong></p>
                     <img width="20%"
                         src="{{ str_contains($profile->photo, 'https://') ? $profile->photo : asset('storage' . $profile->photo) }}"
                         alt="{{ $profile->name }}">
@@ -34,10 +34,6 @@
 
                 @if ($profile->mobile)
                     <p><strong>Mobile:</strong> {{ $profile->mobile }}</p>
-                @endif
-
-                @if ($profile->city)
-                    <p><strong>City:</strong> {{ $profile->city }}</p>
                 @endif
 
                 @if ($profile->phone)
