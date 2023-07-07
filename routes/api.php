@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('profiles', [ProfileController::class, 'index']);
 
+Route::get('profiles', [ProfileController::class, 'index']);
 Route::get('/test', function () {
     return response()->json([
         'name' => 'ciao'
