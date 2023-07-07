@@ -24,7 +24,7 @@ class ProfileController extends Controller
         $profile = Profile::with('technology')->where('id', $id)->first();
 
 
-        //se il progetto esiste mi da success true altrimenti mi restituisce false 
+        // se il progetto esiste mi da success true altrimenti mi restituisce false 
         if ($profile) {
             return response()->json([
                 'success' => true,
