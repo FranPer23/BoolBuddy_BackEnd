@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\TechnologyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('profiles', [ProfileController::class, 'index']);
 
 Route::get('profiles/{id}', [ProfileController::class, 'show']);
+Route::get('technologies', [TechnologyController::class, 'index']);
