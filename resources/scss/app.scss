@@ -1,5 +1,160 @@
 @import '~bootstrap/scss/bootstrap';
 
-.ms_dashboard_card {
-    height: 300px;
+$color1: #3E444C;
+$color2: #69788C;
+$color3: #D1D8E0;
+$color4: #F0F3F4;
+$color5: #FFFFFF;
+
+.navbar {
+    background-color: $color1;
+
+    .nav-link {
+        color: $color3;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $color2;
+            text-decoration: none;
+        }
+
+        #customIcon {
+            text-align: left !important;
+        }
+    }
+
+    .navbar-brand {
+        color: $color3;
+
+        &:hover {
+            color: $color2;
+        }
+    }
+
+    .navbar-toggler-icon {
+        filter: invert(1);
+    }
+}
+
+.sidebar {
+    background-color: $color2;
+
+    .nav-item {
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05);
+            background-color: darken($color2, 10%);
+        }
+
+        &.active {
+            background-color: $color3;
+            color: $color1;
+        }
+    }
+
+    .nav-link {
+        color: $color5;
+
+        &:hover {
+            color: $color4;
+            text-decoration: none;
+        }
+    }
+}
+
+.main {
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: $color5;
+
+    .profile-image {
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+        margin-bottom: 15px;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .row {
+        margin-bottom: 20px;
+
+        .ms_dashboard_card {
+            transition: all 0.3s ease;
+            border: 1px solid $color2;
+
+            &:hover {
+                transform: scale(1.02);
+                box-shadow: 0 5px 15px rgba($color1, 0.2);
+            }
+
+            .card-body {
+                color: $color2;
+
+                h5 {
+                    color: $color1;
+                    text-transform: uppercase;
+                }
+            }
+
+            .card-footer {
+                background-color: $color4;
+
+                a {
+                    color: $color1;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        color: $color2;
+                    }
+                }
+            }
+        }
+    }
+}
+
+body {
+    background-color: $color4;
+    font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+    color: $color1;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.btn {
+    transition: all 0.3s ease;
+    color: $color1;
+    border-color: $color2;
+
+    &.btn-primary {
+        background-color: $color3;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: darken($color3, 10%);
+            border-color: darken($color2, 10%);
+            color: darken($color1, 10%);
+        }
+    }
+
+    &.btn-warning {
+        background-color: $color2;
+        border-color: darken($color2, 10%);
+        color: $color5;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: darken($color2, 10%);
+            color: $color5;
+        }
+    }
 }

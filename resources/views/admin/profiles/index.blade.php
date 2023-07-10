@@ -8,15 +8,15 @@
                 <h2>My Profile</h2>
             </div>
             <div class="card-body">
-                
+
                 @if ($profile->photo)
-                    <p><strong>photo:</p>
-                    <img width="20%"
+                    <p><strong>Photo:</strong></p>
+                    <img class="profile-image" width="20%"
                         src="{{ str_contains($profile->photo, 'https://') ? $profile->photo : asset('storage' . $profile->photo) }}"
                         alt="{{ $profile->name }}">
                 @endif
                 @if ($profile->name)
-                    <p><strong>Name:</strong> {{ $profile->name }}</p>
+                    <p class="profile-image-name"><strong>Name:</strong> {{ $profile->name }}</p>
                 @endif
 
                 @if ($profile->surname)
@@ -26,7 +26,6 @@
                 @if ($profile->address)
                     <p><strong>Address:</strong> {{ $profile->address }}</p>
                 @endif
-
 
                 @if ($profile->city)
                     <p><strong>City:</strong> {{ $profile->city }}</p>
@@ -41,16 +40,14 @@
                 @endif
 
                 @if ($profile->cv)
-                    <p><strong>CV:</p>
-                    <img width="20%"
-                        src="{{ str_contains($profile->cv, 'https://') ? $profile->cv : asset('storage' . $profile->cv) }}"
-                        alt="{{ $profile->name }}">
+                    <p><strong>CV:</strong> <a
+                            href="{{ str_contains($profile->cv, 'https://') ? $profile->cv : asset('storage' . $profile->cv) }}"
+                            target="_blank">View CV</a></p>
                 @endif
 
                 @if ($profile->field)
                     <p><strong>Field:</strong> {{ $profile->field }}</p>
                 @endif
-
 
                 @if ($profile->service)
                     <p><strong>Service:</strong> {{ $profile->service }}</p>
@@ -64,14 +61,6 @@
                     @endforelse
                 </p>
             </div>
-
-            {{-- <form class="d-inline-block" action="{{ route('admin.profiles.destroy', $profile->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </form> --}}
 
             <div class="card-footer">
                 <a href="{{ route('admin.profiles.edit', $profile->id) }}" class="btn btn-warning">Edit</a>
