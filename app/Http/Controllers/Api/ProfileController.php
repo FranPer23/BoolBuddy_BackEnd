@@ -10,7 +10,16 @@ class ProfileController extends Controller
 {
     public function index(Request $request)
     {
-        $profiles = Profile::with(['technology'])->paginate(10);
+
+        $query = Profile::with(['technology']);
+
+        if ($request->has('technology_id')) {
+            $query->whereHas('technology', function ($q) use ($request) {
+                $q->whereIn('id', [$request->technology_id]);
+            });
+        }
+
+        $profiles = $query->paginate(20);
 
         return response()->json([
             'success' => true, // non è obbligatorio, mi serve solo per dire che la chiamata è avvenuta con successo
