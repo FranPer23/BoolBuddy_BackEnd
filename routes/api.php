@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\TechnologyController;
 use Illuminate\Http\Request;
@@ -22,3 +23,5 @@ Route::get('profiles', [ProfileController::class, 'index']);
 
 Route::get('profiles/{id}', [ProfileController::class, 'show']);
 Route::get('technologies', [TechnologyController::class, 'index']);
+
+Route::post('messages', [MessageController::class, 'index']);
