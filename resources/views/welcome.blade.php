@@ -20,7 +20,7 @@
                 range of fields including web development, full-stack development, junior web development, web design and
                 much more. Whether you're starting a new project or need help with an existing one, we're here to assist
                 you.</p>
-            <a href="#" class="btn btn-primary btn-lg" type="button">Explore Services</a>
+            <a href="http://localhost:5174/" class="btn btn-primary btn-lg" type="button">Start Now!</a>
         </div>
     </div>
 
