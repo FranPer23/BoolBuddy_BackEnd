@@ -44,9 +44,11 @@
                     <div class="col-md-6">
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
-                                <h5 class="card-title">My Profile</h5>
+                                <h5 class=" card-title">My Profile</h5>
 
-                                <div class="card-footer">
+                                <hr>
+
+                                <div class="">
 
                                     @if ($profile->name)
                                         <p><strong>Name:</strong> {{ $profile->name }}</p>
@@ -66,6 +68,7 @@
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class="card-title">My Reviews</h5>
+                                <hr>
                                 {{-- Dati --}}
                             </div>
                         </div>
@@ -77,6 +80,7 @@
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class="card-title">My Statistics</h5>
+                                <hr>
                                 {{-- Dati --}}
                             </div>
                         </div>
@@ -85,6 +89,7 @@
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class="card-title">My Messages</h5>
+                                <hr>
                                 {{-- Dati --}}
                             </div>
                         </div>
@@ -93,6 +98,7 @@
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class="card-title">My Sponsor</h5>
+                                <hr>
                                 {{-- Dati --}}
                             </div>
                         </div>
