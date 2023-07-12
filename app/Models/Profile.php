@@ -16,22 +16,22 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function vote()
+    public function votes()
     {
         return $this->hasMany(Vote::class);
     }
 
-    public function message()
+    public function messages()
     {
         return $this->hasMany(Message::class);
     }
 
-    public function review()
+    public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 
-    public function subscription()
+    public function subscriptions()
     {
         return $this->belongsToMany(Subscription::class);
     }

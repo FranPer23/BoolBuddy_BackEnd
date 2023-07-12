@@ -15,7 +15,14 @@ class MessageController extends Controller
      */
     public function index(Request $request)
     {
-        // Profile::where('id', $id)->first();
+        $data = $request->all();
+        $message = new Message();
+        $message->user_email = $data['email'];
+        $message->body = $data['message'];
+        $message->user_name = $data['name'];
+        $message->profile_id = $data['specialist_id'];
+        $message->user_surname = $data['surname'];
+        $message->save();
     }
 
     /**
@@ -36,7 +43,6 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
