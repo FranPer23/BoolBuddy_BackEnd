@@ -45,11 +45,8 @@
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 <h5 class=" card-title">My Profile</h5>
-
                                 <hr>
-
                                 <div class="">
-
                                     @if ($profile->name)
                                         <p><strong>Name:</strong> {{ $profile->name }}</p>
                                     @endif
@@ -60,7 +57,6 @@
                                     <a href="{{ route('admin.profiles.show', $profile->id) }}" class="btn btn-primary">My
                                         Profile</a>
                                 </div>
-                                {{-- Dati --}}
                             </div>
                         </div>
                     </div>
@@ -69,7 +65,16 @@
                             <div class="card-body">
                                 <h5 class="card-title">My Reviews</h5>
                                 <hr>
-                                {{-- Dati --}}
+                                <div class="">
+                                    @if ($profile->reviews)
+                                        @foreach ($profile->reviews as $review)
+                                            <p><strong>Name:</strong> {{ $review->username }}</p>
+                                            <p><strong>Text:</strong> {{ $review->body }}</p>
+                                        @endforeach
+                                    @else
+                                        <p>No reviews yet.</p>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,7 +95,15 @@
                             <div class="card-body">
                                 <h5 class="card-title">My Messages</h5>
                                 <hr>
-                                {{-- Dati --}}
+                                @if ($profile->messages)
+                                    @foreach ($profile->messages as $message)
+                                    <p><strong>Name:</strong> {{ $message->username }}</p>
+                                    <p><strong>E-mail:</strong> {{ $message->user_email }}</p>
+                                    <p><strong>Text:</strong> {{ $message->body }}</p>
+                                    @endforeach
+                                @else
+                                    <p>No messages yet.</p>
+                                @endif
                             </div>
                         </div>
                     </div>

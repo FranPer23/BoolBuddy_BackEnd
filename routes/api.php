@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\TechnologyController;
+use App\Http\Controllers\Api\VoteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,4 @@ Route::get('technologies', [TechnologyController::class, 'index']);
 
 Route::post('messages', [MessageController::class, 'index']);
 Route::post('reviews', [ReviewController::class, 'index']);
-Route::post('votes', [ReviewController::class, 'index']);
+Route::post('votes', [VoteController::class, 'index']);

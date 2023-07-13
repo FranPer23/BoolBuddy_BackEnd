@@ -17,6 +17,8 @@ class VoteController extends Controller
     {
         $data = $request->all();
         $vote = new Vote();
+        $vote->username = $data['username'];
+        $vote->vote = $data['vote'];
         $vote->profile_id = $data['specialist_id'];
         $vote->save();
     }
