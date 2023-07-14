@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\Vote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
     public function index(Request $request)
     {
-
-        $query = Profile::with(['technology']);
+        DB::statement("SET SQL_MODE=''");
+        $query = Profile::with(['technology', 'votes', 'reviews']);
+        // $avgTable = DB::table('votes')->groupBy('profile_id')->selectRaw('profile_id, avg(vote)')->get();
 
         if ($request->has('technology_id')) {
             $query->whereHas('technology', function ($q) use ($request) {
@@ -19,7 +22,20 @@ class ProfileController extends Controller
             });
         }
 
-        $profiles = $query->paginate(20);
+        if ($request->has('averageVote')) {
+            $query->whereHas('votes', function ($q) use ($request) {
+                $q->groupBy('profile_id')->havingRaw('AVG(vote) >= ?', [$request->averageVote]);
+            });
+        }
+
+
+        // if ($request->has('averageVote')) {
+        //     $query->whereHas('votes', function ($q) use ($request) {
+        //         $q->whereIn('vote', [$request->averageVote]);
+        //     });
+        // }
+
+        $profiles = $query->paginate(200);
 
         return response()->json([
             'success' => true, // non è obbligatorio, mi serve solo per dire che la chiamata è avvenuta con successo
