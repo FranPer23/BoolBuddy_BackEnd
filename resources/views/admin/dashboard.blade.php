@@ -4,120 +4,144 @@
     <div class="container-fluid">
         <div class="row">
 
-            {{-- <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                My Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                My Messages
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                My Reviews
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Statistics
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav> --}}
-
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <main role="main" class="ml-sm-auto p-4">
                 {{-- Contenuto --}}
                 <h1 class="mt-3">Welcome back, {{ $profile->name }}</h1>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
-                                <h5 class=" card-title">My Profile</h5>
+                                {{-- MY PROFILE --}}
+                                <h5 class=" card-title text-uppercase">My Profile</h5>
                                 <hr>
-                                <div class="">
-                                    @if ($profile->name)
-                                        <p><strong>Name:</strong> {{ $profile->name }}</p>
-                                    @endif
-
-                                    @if ($profile->surname)
-                                        <p><strong>Surname:</strong> {{ $profile->surname }}</p>
-                                    @endif
+                                <div class="d-flex text-center">
+                                    <div class="ms_name-surname col-6">
+                                        @if ($profile->name)
+                                            <p><strong>Name:</strong> {{ $profile->name }}</p>
+                                        @endif
+    
+                                        @if ($profile->surname)
+                                            <p><strong>Surname:</strong> {{ $profile->surname }}</p>
+                                        @endif
+                                    </div>
+                                    <div class="ms_address-city col-6">
+                                        @if ($profile->name)
+                                            <p><strong>Address:</strong> {{ $profile->address }}</p>
+                                        @endif
+    
+                                        @if ($profile->surname)
+                                            <p><strong>City:</strong> {{ $profile->city }}</p>
+                                        @endif
+                                    </div>
+                                    
+                                </div>
+                                <div class="d-flex justify-content-center">
                                     <a href="{{ route('admin.profiles.show', $profile->id) }}" class="btn btn-primary">My
                                         Profile</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="row">
+                    {{-- MESSAGES --}}
                     <div class="col-md-6">
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
-                                <h5 class="card-title">My Reviews</h5>
-                                <hr>
-                                <div class="">
-                                    @if ($profile->reviews)
-                                        @foreach ($profile->reviews as $review)
-                                            <p><strong>Name:</strong> {{ $review->username }}</p>
-                                            <p><strong>Text:</strong> {{ $review->body }}</p>
-                                        @endforeach
-                                    @else
-                                        <p>No reviews yet.</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card mt-3 ms_dashboard_card">
-                            <div class="card-body">
-                                <h5 class="card-title">My Statistics</h5>
-                                <hr>
-                                {{-- Dati --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mt-3 ms_dashboard_card">
-                            <div class="card-body">
-                                <h5 class="card-title">My Messages</h5>
+                                <h5 class="card-title text-uppercase">My Messages</h5>
                                 <hr>
                                 @if ($profile->messages)
-                                    @foreach ($profile->messages as $message)
-                                    <p><strong>Name:</strong> {{ $message->username }}</p>
-                                    <p><strong>E-mail:</strong> {{ $message->user_email }}</p>
-                                    <p><strong>Text:</strong> {{ $message->body }}</p>
-                                    @endforeach
+                                    @for ($i = 0; $i < 3; $i++)
+                                    <p><strong>Name:</strong> {{ $profile->messages[$i]->username }}</p>
+                                    <p><strong>E-mail:</strong> {{ $profile->messages[$i]->user_email }}</p>
+                                    <p><strong>Message:</strong> {{ $profile->messages[$i]->body }}</p>
+                                    <hr>
+                                    @endfor
                                 @else
                                     <p>No messages yet.</p>
                                 @endif
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mt-3 ms_dashboard_card">
-                            <div class="card-body">
-                                <h5 class="card-title">My Sponsor</h5>
-                                <hr>
-                                {{-- Dati --}}
+                            <div class="d-flex justify-content-center pb-4">
+                                <a href="{{ route('admin.messages.index', $profile->id) }}" class="btn btn-primary">My Messages</a>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                    {{-- VOTES --}}
+                    <div class="col-md-6">
+                        <div class="card mt-3 ms_dashboard_card">
+                            <div class="card-body">
+                                <h5 class="card-title text-uppercase">My Votes</h5>
+                                <hr>
+                                @if ($profile->votes)
+                                    {{-- @foreach ($profile->votes as $vote) --}}
+                                    @for ($i = 0; $i < 5; $i++)
+                                    <div> {{date('d-m-Y', strtotime($profile->votes[$i]->created_at))}}</div>
+                                    <div> 
+                                        @if ( $profile->votes[$i]->vote == 1)
+                                        <i class="fa-solid fa-star"></i>
+                                        @endif
+                                        @if ( $profile->votes[$i]->vote == 2)
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        @endif
+                                        @if ( $profile->votes[$i]->vote == 3)
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        @endif
+                                        @if ( $profile->votes[$i]->vote == 4)
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        @endif
+                                        @if ( $profile->votes[$i]->vote == 5)
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        @endif
+                                    </div> 
+                                    <hr>
+                                    @endfor
+                                @else
+                                    <p>No votes yet.</p>
+                                @endif
+                            </div>
+                            <div class="d-flex justify-content-center pb-4">
+                                <a href="{{ route('admin.votes.index', $profile->id) }}" class="btn btn-primary">My Votes</a>
+                            </div>
+                        </div>
+                    </div>
+
+                {{-- REVIEWS --}}
+                <div class="row">
+                    <div class="">
+                        <div class="card mt-3 ms_dashboard_card">
+                            <div class="card-body">
+                                <h5 class=" card-title text-uppercase">My Reviews</h5>
+                                <hr>
+                                @if ($profile->reviews)
+                                @for ($i = 0; $i < 2; $i++)
+                                <p><strong>Username:</strong> {{ $profile->reviews[$i]->username }}</p>
+                                <p><strong>Review:</strong> {{ $profile->reviews[$i]->body }}</p>
+                                <hr>
+                                @endfor
+                                
+                                @else
+                                    <p>No reviews yet.</p>
+                                @endif
+                            </div>
+                            <div class="d-flex justify-content-center pb-4">
+                                <a href="{{ route('admin.reviews.index', $profile->id) }}" class="btn btn-primary">My Reviews</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
             </main>
         </div>
     </div>

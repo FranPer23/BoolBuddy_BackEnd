@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container py-4">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -14,9 +14,9 @@
         @endif
 
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="">
                 <div class="card">
-                    <div class="card-header">{{ __('Edit Profile') }}</div>
+                    <div class="card-header"><h2>{{ __('Edit Profile') }}</h2></div>
 
                     <div class="card-body">
                         <form action="{{ route('admin.profiles.update', $profile->id) }}" method="POST"
@@ -114,14 +114,14 @@
                             <button type="submit" class="btn btn-primary mt-3">
                                 {{ __('Submit') }}
                             </button>
+                            <a class="btn btn-link mt-3" href="{{ url()->previous() }}">
+                                {{ __('Back') }}
+                            </a>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <a class="btn btn-link mt-3" href="{{ url()->previous() }}">
-            {{ __('Back') }}
-        </a>
     </div>
     @vite(['resources/js/validationEdit.js'])
 @endsection

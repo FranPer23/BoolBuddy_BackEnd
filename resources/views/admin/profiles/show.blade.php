@@ -2,11 +2,8 @@
 
 @section('content')
     <div class="container my-4">
-        <h1 class="mb-4">Hello {{ $profile->name }}</h1>
+        <h2 class="text-center">My Profile</h2>
         <div class="card">
-            <div class="card-header">
-                <h2>My Profile</h2>
-            </div>
             <div class="card-body">
 
                 @if ($profile->photo)

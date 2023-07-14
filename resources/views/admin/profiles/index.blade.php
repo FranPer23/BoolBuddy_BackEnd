@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container my-4">
-        <h1 class="mb-4">Hello {{ $profile->name }}</h1>
         <div class="card">
             <div class="card-header">
                 <h2>My Profile</h2>

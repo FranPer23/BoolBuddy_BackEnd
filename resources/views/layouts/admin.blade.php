@@ -26,9 +26,9 @@
 <body>
     <div id="app">
 
-        <header class="navbar navbar-dark sticky-top flex-md-nowrap p-2 shadow">
+        <header class="navbar navbar-dark fixed-top flex-md-nowrap p-2 shadow">
             <div class="row justify-content-between">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolBuddy</a>
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.dashboard') }}">BoolBuddy</a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -51,8 +51,8 @@
 
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-                    <div class="position-sticky pt-3">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse position-fixed h-100">
+                    <div class="position-fixed pt-3">
                         <ul class="nav flex-column">
 
                             <li class="nav-item">
@@ -62,47 +62,42 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.index' ? '' : '' }}"
+                            <li class="nav-item" style="width: 100%">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.profiles.index') }}">
-                                    <i class="fa-regular fa-folder-open"></i> Profile
+                                    <i class="fa-regular fa-folder-open"></i> My Profile
                                 </a>
                             </li>
 
-                            {{-- <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.edit' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.profiles.edit') }}">
-                                    <i class="fa-regular fa-folder-open"></i> Edit Profile
-                                </a>
-                            </li> --}}
-
-                            {{-- <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.messages' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.messages') }}">
+                             <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.messages' ? '' : '' }}"
+                                    href="{{ route('admin.messages.index') }}">
                                     <i class="fa-regular fa-envelope"></i> My Messages
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.reviews' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.reviews') }}">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.reviews.index' ? '' : '' }}"
+                                    href="{{ route('admin.reviews.index') }}">
                                     <i class="fa-regular fa-star"></i> My Reviews
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.statistics' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.statistics') }}">
-                                    <i class="fa-regular fa-chart-bar"></i> Statistics
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.votes.index' ? '' : '' }}"
+                                    href="{{ route('admin.votes.index') }}">
+                                    <i class="fa-regular fa-chart-bar"></i> My Votes
                                 </a>
-                            </li> --}}
+                            </li>
 
                         </ul>
                     </div>
                 </nav>
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    @yield('content')
+                    <div class="ms_fixed">
+                        @yield('content')
+                    </div>
                 </main>
             </div>
         </div>

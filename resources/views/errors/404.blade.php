@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <p class="text-center">Siamo spiacenti, ma la pagina che stai cercando non esiste.</p>
                         <div class="text-center">
-                            <a href="{{ url('/') }}" class="btn btn-primary">Torna alla homepage</a>
+                            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Torna alla homepage</a>
                         </div>
                     </div>
                 </div>
