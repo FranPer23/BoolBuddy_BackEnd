@@ -51,7 +51,7 @@
 
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse position-fixed h-100">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse position-fixed h-100 ms_fixed">
                     <div class="position-fixed pt-3">
                         <ul class="nav flex-column">
 
@@ -62,7 +62,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item mt-3" style="width: 100%">
+                            <li class="nav-item" style="width: 100%">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.index' ? '' : '' }}"
                                     href="{{ route('admin.profiles.index') }}">
                                     <i class="fa-regular fa-folder-open"></i> My Profile

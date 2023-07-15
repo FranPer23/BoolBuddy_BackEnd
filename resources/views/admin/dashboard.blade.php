@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
 
-            <main role="main" class="ml-sm-auto p-4">
+            <main role="main" class="ml-sm-auto">
                 {{-- Contenuto --}}
                 <h1 class="mt-3">Welcome back, {{ $profile->name }}</h1>
 
