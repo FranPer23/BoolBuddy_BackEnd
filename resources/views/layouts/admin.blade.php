@@ -62,8 +62,8 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item" style="width: 100%">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.index' ? 'bg-secondary' : '' }}"
+                            <li class="nav-item mt-3" style="width: 100%">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.profiles.index' ? '' : '' }}"
                                     href="{{ route('admin.profiles.index') }}">
                                     <i class="fa-regular fa-folder-open"></i> My Profile
                                 </a>
@@ -89,7 +89,6 @@
                                     <i class="fa-regular fa-chart-bar"></i> My Votes
                                 </a>
                             </li>
-
                         </ul>
                     </div>
                 </nav>
@@ -101,9 +100,6 @@
                 </main>
             </div>
         </div>
-
     </div>
-
 </body>
-
 </html>

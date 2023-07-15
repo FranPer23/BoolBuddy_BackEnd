@@ -13,7 +13,7 @@
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
                                 {{-- MY PROFILE --}}
-                                <h5 class=" card-title text-uppercase">My Profile</h5>
+                                <h5 class=" card-title text-uppercase">Profile</h5>
                                 <hr>
                                 <div class="d-flex text-center">
                                     <div class="ms_name-surname col-6">
@@ -37,8 +37,7 @@
 
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <a href="{{ route('admin.profiles.show', $profile->id) }}" class="btn btn-primary">My
-                                        Profile</a>
+                                    <a href="{{ route('admin.profiles.show', $profile->id) }}" class="btn btn-primary">Profile</a>
                                 </div>
                             </div>
                         </div>
@@ -50,22 +49,19 @@
                     <div class="col-md-6">
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase">My Messages</h5>
+                                <h5 class="card-title text-uppercase">Messages</h5>
                                 <hr>
-                                @if ($profile->messages)
-                                    @foreach ($profile->messages as $message)
-                                        <p><strong>Name:</strong> {{ $message->username }}</p>
-                                        <p><strong>E-mail:</strong> {{ $message->user_email }}</p>
-                                        <p><strong>Message:</strong> {{ $message->body }}</p>
-                                        <hr>
-                                    @endforeach
+                                @if ($profile->messages->isNotEmpty())
+                                    <p><strong>Name:</strong> {{ $profile->messages->first()->username }}</p>
+                                    <p><strong>E-mail:</strong> {{ $profile->messages->first()->user_email }}</p>
+                                    <p><strong>Message:</strong> {{ $profile->messages->first()->body }}</p>
+                                    <hr>
                                 @else
                                     <p>No messages yet.</p>
                                 @endif
                             </div>
                             <div class="d-flex justify-content-center pb-4">
-                                <a href="{{ route('admin.messages.index', $profile->id) }}" class="btn btn-primary">My
-                                    Messages</a>
+                                <a href="{{ route('admin.messages.index', $profile->id) }}" class="btn btn-primary">Messages</a>
                             </div>
                         </div>
                     </div>
@@ -74,48 +70,44 @@
                     <div class="col-md-6">
                         <div class="card mt-3 ms_dashboard_card">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase">My Votes</h5>
+                                <h5 class="card-title text-uppercase">Votes</h5>
                                 <hr>
-                                @if ($profile->votes)
-                                    @foreach ($profile->votes as $vote)
-                                        {{-- @for ($i = 0; $i < 5; $i++) --}}
-                                        <div> {{ date('d-m-Y', strtotime($vote->created_at)) }}</div>
-                                        <div>
-                                            @if ($vote->vote == 1)
-                                                <i class="fa-solid fa-star"></i>
-                                            @endif
-                                            @if ($vote->vote == 2)
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            @endif
-                                            @if ($vote->vote == 3)
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            @endif
-                                            @if ($vote->vote == 4)
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            @endif
-                                            @if ($vote->vote == 5)
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            @endif
-                                        </div>
-                                        <hr>
-                                    @endforeach
+                                @if ($profile->votes->isNotEmpty())
+                                    <div> {{ date('d-m-Y', strtotime($profile->votes->first()->created_at)) }}</div>
+                                    <div>
+                                        @if ($profile->votes->first()->vote == 1)
+                                            <i class="fa-solid fa-star"></i>
+                                        @endif
+                                        @if ($profile->votes->first()->vote == 2)
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        @endif
+                                        @if ($profile->votes->first()->vote == 3)
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        @endif
+                                        @if ($profile->votes->first()->vote == 4)
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        @endif
+                                        @if ($profile->votes->first()->vote == 5)
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        @endif
+                                    </div>
+                                    <hr>
                                 @else
                                     <p>No votes yet.</p>
                                 @endif
                             </div>
                             <div class="d-flex justify-content-center pb-4">
-                                <a href="{{ route('admin.votes.index', $profile->id) }}" class="btn btn-primary">My
-                                    Votes</a>
+                                <a href="{{ route('admin.votes.index', $profile->id) }}" class="btn btn-primary">Votes</a>
                             </div>
                         </div>
                     </div>
@@ -125,21 +117,18 @@
                         <div class="">
                             <div class="card mt-3 ms_dashboard_card">
                                 <div class="card-body">
-                                    <h5 class=" card-title text-uppercase">My Reviews</h5>
+                                    <h5 class=" card-title text-uppercase">Reviews</h5>
                                     <hr>
-                                    @if ($profile->reviews)
-                                        @foreach ($profile->reviews as $review)
-                                            <p><strong>Username:</strong> {{ $review->username }}</p>
-                                            <p><strong>Review:</strong> {{ $review->body }}</p>
-                                            <hr>
-                                        @endforeach
+                                    @if ($profile->reviews->isNotEmpty())
+                                        <p><strong>Username:</strong> {{ $profile->reviews->first()->username }}</p>
+                                        <p><strong>Review:</strong> {{ $profile->reviews->first()->body }}</p>
+                                        <hr>
                                     @else
                                         <p>No reviews yet.</p>
                                     @endif
                                 </div>
                                 <div class="d-flex justify-content-center pb-4">
-                                    <a href="{{ route('admin.reviews.index', $profile->id) }}" class="btn btn-primary">My
-                                        Reviews</a>
+                                    <a href="{{ route('admin.reviews.index', $profile->id) }}" class="btn btn-primary">Reviews</a>
                                 </div>
                             </div>
                         </div>
