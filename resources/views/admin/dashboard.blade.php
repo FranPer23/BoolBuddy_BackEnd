@@ -52,7 +52,7 @@
                                 <h5 class="card-title text-uppercase">Messages</h5>
                                 <hr>
                                 @if ($profile->messages->isNotEmpty())
-                                    <p><strong>Name:</strong> {{ $profile->messages->first()->username }}</p>
+                                    <p><strong>Name:</strong> {{ $profile->messages->first()->user_name }}</p>
                                     <p><strong>E-mail:</strong> {{ $profile->messages->first()->user_email }}</p>
                                     <p><strong>Message:</strong> {{ $profile->messages->first()->body }}</p>
                                     <hr>
