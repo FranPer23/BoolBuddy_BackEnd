@@ -39,8 +39,9 @@
                                         </span>
                                     @enderror
                                 </div>
+
+                                <span class="text text-danger fw-bold" id="errorNameEmpty"></span>
                             </div>
-                            <span class="text text-danger" id="errorNameEmpty"></span>
 
                             <div class="mb-4 row">
                                 <label for="surname"
@@ -57,8 +58,8 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <span class="text text-danger fw-bold" id="errorSurnameEmpty"></span>
                             </div>
-                            <span class="text text-danger" id="errorSurnameEmpty"></span>
                             <div class="mb-4 row">
                                 <label for="email"
                                     class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
@@ -74,17 +75,18 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
-                            <span class="text text-danger" id="errorEmailEmpty"></span><br>
-                            <span class="text text-danger" id="errorMailFormat"></span>
+                                <span class="text text-danger fw-bold" id="errorEmailEmpty"></span><br>
+                                <span class="text text-danger fw-bold" id="errorMailFormat"></span>
+                                </div>
 
 
                             <div class="mb-4 row">
                                 <label for="technologies"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Technologies*') }}</label>
+                                    <span class="text text-danger fw-bold" id="errorTech"></span>
 
                                 <div class="col-md-6">
-                                    <div class="form-check">
+                                    <div class="">
                                         @error('technologies')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -101,7 +103,7 @@
 
                                             </div>
                                         @endforeach
-                                        <span class="text text-danger" id="errorTech"></span>
+                                        
                                     </div>
 
                                     @error('technology')
@@ -127,8 +129,8 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <span class="text text-danger fw-bold" id="errorAddressEmpty"></span>
                             </div>
-                            <span class="text text-danger" id="errorAddressEmpty"></span>
 
                             <div class="mb-4 row">
                                 <label for="city"
@@ -145,8 +147,8 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <span class="text text-danger fw-bold" id="errorCityEmpty"></span>
                             </div>
-                            <span class="text text-danger" id="errorCityEmpty"></span>
                             <div class="mb-4 row">
                                 <label for="password"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
@@ -170,9 +172,9 @@
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation">
                                 </div>
+                                <span class="text text-danger fw-bold" id="errorPw"></span><br>
+                                <span class="text text-danger fw-bold" id="errorPw2"></span>
                             </div>
-                            <span class="text text-danger" id="errorPw"></span><br>
-                            <span class="text text-danger" id="errorPw2"></span>
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
