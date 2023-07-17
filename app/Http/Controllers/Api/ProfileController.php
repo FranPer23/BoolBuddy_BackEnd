@@ -27,6 +27,11 @@ class ProfileController extends Controller
                 $q->groupBy('profile_id')->havingRaw('AVG(vote) >= ?', [$request->averageVote]);
             });
         }
+        if ($request->has('minReviews')) {
+            $query->whereHas('reviews', function ($q) use ($request) {
+                $q->groupBy('profile_id')->havingRaw('COUNT(body) >= ?', [$request->minReviews]);
+            });
+        }
 
 
         // if ($request->has('averageVote')) {
