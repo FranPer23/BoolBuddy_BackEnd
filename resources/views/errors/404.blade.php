@@ -7,11 +7,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">404 - Pagina non trovata</div>
+                    <div class="card-header">404 - Page not found</div>
                     <div class="card-body">
-                        <p class="text-center">Siamo spiacenti, ma la pagina che stai cercando non esiste.</p>
+                        <p class="text-center">The page does not exist.</p>
                         <div class="text-center">
-                            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Torna alla homepage</a>
+                            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Back to your Dashboard</a>
                         </div>
                     </div>
                 </div>
